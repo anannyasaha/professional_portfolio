@@ -27,36 +27,87 @@
         }
         
         /* Journey Section Timeline */
-        .timeline-item {
-            position: relative;
-            padding-left: 3rem;
-            padding-bottom: 2rem;
-            border-left: 2px solid #e7e5e4; /* stone-200 */
-        }
-        .dark .timeline-item {
-            border-left-color: #57534e; /* stone-600 */
-        }
-        .timeline-item:last-child {
-            border-left-color: transparent;
-            padding-bottom: 0;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: -0.80rem;
-            top: 0.125rem;
-            height: 1.5rem;
-            width: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff; /* white */
-            border-radius: 9999px;
-            border: 2px solid #e7e5e4; /* stone-200 */
-        }
-        .dark .timeline-dot {
-            background-color: #1c1917; /* stone-900 */
-            border-color: #57534e; /* stone-600 */
-        }
+         .timeline-item {
+        position: relative;
+        padding-left: 3rem;
+        padding-bottom: 2rem;
+        border-left: 2px solid #e7e5e4; /* stone-200 */
+    }
+    .dark .timeline-item {
+        border-left-color: #57534e; /* stone-600 */
+    }
+    .timeline-item:last-child {
+        border-left-color: transparent;
+        padding-bottom: 0;
+    }
+
+    /* Clickable Dot & Icon */
+    .timeline-dot {
+        position: absolute;
+        left: -0.8rem; /* Adjusted for centering */
+        top: 0.125rem;
+        height: 1.5rem;
+        width: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff; /* white */
+        border-radius: 9999px;
+        border: 2px solid #e7e5e4; /* stone-200 */
+        cursor: pointer; /* Makes it look clickable */
+        transition: background-color 0.2s;
+    }
+    .dark .timeline-dot {
+        background-color: #1c1917; /* stone-900 */
+        border-color: #57534e; /* stone-600 */
+    }
+    .timeline-dot:hover {
+        background-color: #f5f5f4; /* stone-100 */
+    }
+    .dark .timeline-dot:hover {
+        background-color: #292524; /* stone-800 */
+    }
+    .timeline-dot svg {
+        width: 1rem;
+        height: 1rem;
+        color: #d97706; /* amber-600 */
+    }
+
+    /* Expandable Content Area */
+    .timeline-details {
+        display: none; /* Hidden by default */
+        margin-top: 1rem;
+        padding-left: 0.5rem;
+        color: #57534e; /* stone-600 */
+    }
+    .dark .timeline-details {
+        color: #d6d3d1; /* stone-300 */
+    }
+    .timeline-details ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        margin-top: 0.5rem;
+    }
+    .timeline-details img {
+        margin-top: 0.75rem;
+        border-radius: 0.5rem;
+        border: 1px solid #d6d3d1; /* stone-300 */
+        max-width: 150px; /* Adjust image size as needed */
+    }
+    .zoom-container {
+    position: relative; /* Establishes a positioning context for the image */
+    display: inline-block; /* Or 'block', depending on your layout */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    }
+
+/* The image itself */
+    .zoom-container img {
+    display: block;
+    width: 100%; /* Ensures the image fits its container */
+    transition: transform 0.3s ease-in-out; /* Adds a smooth transition effect */
+    }
+
+
 
         /* Project Filtering & Modal Transitions */
         .project-card {
@@ -222,7 +273,7 @@
                     <!-- Right Column (Image) -->
                     <div class="md:w-2/5 flex justify-center">
                          <div class="p-2 rounded-full bg-gradient-to-br from-amber-500 via-orange-500 to-yellow-500 w-64 h-64 md:w-80 md:h-80 shadow-2xl">
-                            <img src="https://placehold.co/400x400/EAE8E4/1c1917?text=AS" alt="Anannya Saha" class="rounded-full w-full h-full object-cover">
+                            <img src="top pic.jpg" alt="Anannya Saha" class="rounded-full w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -236,12 +287,12 @@
                 <div class="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
                     <div class="md:w-1/3 flex-shrink-0">
                         <div class="p-2 rounded-full bg-gradient-to-br from-amber-500 via-orange-500 to-yellow-500">
-                             <img src="https://placehold.co/400x400/EAE8E4/1c1917?text=AS" alt="Anannya Saha" class="rounded-full">
+                             <img src="Aboutme.jpg" alt="Anannya Saha" class="rounded-full">
                         </div>
                     </div>
                     <div class="md:w-2/3">
                         <p class="text-lg mb-4 text-stone-700 dark:text-stone-300">
-                            My journey into technology began with a fascination for solving puzzles, which led me to a Computer Science degree from Ontario Tech University. Today, I channel that passion into my work as a Data Engineer, where I get to unravel the complexities of data to build efficient, automated systems.
+                            My journey into technology began with a fascination for solving puzzles, which led me to a Computer Science degree from Ontario Tech University. Today, I channel that passion into my work as a Developer, where I get to unravel the complexities of data to build efficient, automated systems.
                         </p>
                         <p class="text-lg mb-4 text-stone-700 dark:text-stone-300">
                             At the Ontario Public Services, I've had the opportunity to wear multiple hats—from a data modeling analyst automating reports with Python to a senior developer co-leading the rollout of enterprise-level systems in Dynamics 365. My core focus is always on bridging the gap between technical possibilities and business needs, whether that's through a Power BI dashboard for staffing analytics or a PowerApps tool that cuts workflow inefficiencies by 38%.
@@ -260,54 +311,131 @@
                 <h2 class="text-4xl font-bold text-center mb-4 font-display">The Journey</h2>
                 <p class="text-center text-lg text-stone-600 dark:text-stone-400 mb-12">A timeline of key milestones in my career.</p>
                 <div class="max-w-3xl mx-auto">
+                   <div class="timeline-item">
+                <div class="timeline-dot" onclick="toggleDetails(this)">
+                    <!-- Plus Icon -->
+                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
+                    <!-- Minus Icon (Hidden) -->
+                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
+                </div>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">MAY 2025 - PRESENT</time>
+                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Developing Enterprise Solutions</h3>
+                <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Senior Applications Developer, I co-led the development of an Audit Case Management System in Dynamics 365 and optimized backend workflows with Python data validation scripts.</p>
+                <!-- Expandable Details -->
+                <div class="timeline-details">
+                    <p class="font-semibold">Roles & Duties:</p>
+                    <ul>
+                        <li>Optimized backend workflows by developing Python data validation scripts, increasing the efficiency of the finance reporting pipeline by 46%.</li>
+                        <li>Co-led the development and rollout of an Audit Case Management System in Dynamics 365, enabling 32 ServiceOntario officials to track and manage complex business cases.</li>
+                        <li>Organized Agile sprints and contributed to backlog refinement for a cross-functional engineering team of 48 members, ensuring a balance between development speed and quality.</li>
+                        <li>Applied Azure AI and Python automation to develop a system that detected service reporting anomalies with 62% greater accuracy than previous methods. </li>
+                    </ul>
+                </div>
+            </div>
                     <div class="timeline-item">
-                        <div class="timeline-dot">
-                             <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                        </div>
-                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">MAY 2025 - PRESENT</time>
-                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Developing Enterprise Solutions</h3>
-                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Senior Applications Developer, I co-led the development of an Audit Case Management System in Dynamics 365 and optimized backend workflows with Python data validation scripts.</p>
+                <div class="timeline-dot" onclick="toggleDetails(this)">
+                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
+                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
+                </div>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">JANUARY 2025</time>
+                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Excellence in Automation Award</h3>
+                <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Excellence Award for transforming manual workforce approvals using a combination of Python and Power Automate.</p>
+                <!-- Expandable Details -->
+                <div class="timeline-details">
+                    <p class="font-semibold">Achievement Details:</p>
+                    <ul>
+                        <li>Designed a fully automated approval workflow, replacing a multi-step manual process.</li>
+                        <li>Reduced processing time for workforce requests by over 78%.</li>
+                    </ul>
+                    <div class="zoom-container">
+
+                    <img src="award1.jfif" alt="Excellence in Automation Award">
                     </div>
+                </div>
+            </div>
                      <div class="timeline-item">
-                        <div class="timeline-dot">
-                             <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                        </div>
-                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">JANUARY 2025</time>
-                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Excellence in Automation Award</h3>
-                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Excellence Award for transforming manual workforce approvals using a combination of Python and Power Automate.</p>
+                <div class="timeline-dot" onclick="toggleDetails(this)">
+                    <!-- Plus Icon -->
+                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
+                    <!-- Minus Icon (Hidden) -->
+                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
+                </div>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">JULY 2024 - APRIL 2025</time>
+                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Bridging Policy and Technology</h3>
+                <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Workforce Policy Analyst, I developed the automated staffing request tool and built interactive Power BI dashboards for workforce forecasting and policy analysis.</p>
+                <!-- Expandable Details -->
+                <div class="timeline-details">
+                    <p class="font-semibold">Roles & Duties:</p>
+                    <ul>
+                        <li>Developed automated staffing request tool using Microsoft Power Automate, integrating Teams Approvals, SharePoint, and PowerBI to increase workflow efficiency by 78%.</li>
+                        <li>Improved data processing accuracy by 67% by building Python and SQL automation scripts for critical workforce reporting.</li>
+                        <li>Fully automated the reporting process by creating interactive Power BI dashboards for workforce forecasting, funding allocation, and policy analysis.</li>
+                        <li>Managed Agile sprints and backlog refinement while leading procurement efforts to acquire analytics tools and training 300+ executives and managers on system adoption.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot" onclick="toggleDetails(this)">
+                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
+                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
+                </div>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">DECEMBER 2023</time>
+                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Recognition for Innovation</h3>
+                <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Innovator Award for creating an enterprise analytics tool to generate organization charts from complex datasets.</p>
+                <!-- Expandable Details -->
+                <div class="timeline-details">
+                    <p class="font-semibold">Achievement Details:</p>
+                    <ul>
+                        <li>Delivered a scalable analytics tool that increased accuracy in workforce planning and pay equity analysis by 80% over previous manual methods.</li>
+                        <li>Developed a robust Python script to automate complex data cleaning and transformation tasks, processing large datasets in under 1 minute with 100% accuracy.</li>
+                        <li>Provided key data visualizations that enabled a 30% faster reduction in the project backlog and supplied executives with clear insights for strategic decisions.</li>
+                    </ul>
+                    <div class="zoom-container">
+                    <img src="award2.jpg" alt="Excellence in Automation Award">
                     </div>
+                </div>
+            </div>
+                     
                     <div class="timeline-item">
-                        <div class="timeline-dot">
-                             <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                        </div>
-                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">JULY 2024 - APRIL 2025</time>
-                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Bridging Policy and Technology</h3>
-                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Workforce Policy Analyst, I developed the automated staffing request tool and built interactive Power BI dashboards for workforce forecasting and policy analysis.</p>
-                    </div>
-                     <div class="timeline-item">
-                        <div class="timeline-dot">
-                             <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                        </div>
-                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">DECEMBER 2023</time>
-                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Recognition for Innovation</h3>
-                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Innovator Award for creating an enterprise analytics tool to generate organization charts from complex datasets.</p>
-                    </div>
+                <div class="timeline-dot" onclick="toggleDetails(this)">
+                    <!-- Plus Icon -->
+                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
+                    <!-- Minus Icon (Hidden) -->
+                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
+                </div>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">MAY 2022 - JULY 2024</time>
+                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Diving into Data Automation</h3>
+                <p class="text-base font-normal text-stone-600 dark:text-stone-400">Began my career as a Workforce Data Modelling Analyst, automating Excel reporting with Python to achieve a 65% faster workflow and developing robust data pipelines.</p>
+                <!-- Expandable Details -->
+                <div class="timeline-details">
+                    <p class="font-semibold">Roles & Duties:</p>
+                    <ul>
+                        <li>Slashed report generation time by over 98% by automating manual Excel processes with Python, reducing a 3-hour task to under 2 minutes</li>
+                        <li>Modernized service standard analysis by migrating a manual Excel system to a fully automated Power BI solution, providing 45 Job Evaluation Specialists with real-time, self-refreshing performance dashboards.</li>
+                    </ul>
+                </div>
+            </div>
                     <div class="timeline-item">
-                        <div class="timeline-dot">
-                            <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                        </div>
-                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">MAY 2022 - JULY 2024</time>
-                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Diving into Data Automation</h3>
-                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Began my career as a Workforce Data Modelling Analyst, automating Excel reporting with Python to achieve a 65% faster workflow and developing robust data pipelines.</p>
+                <div class="timeline-dot" onclick="toggleDetails(this)">
+                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
+                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
+                </div>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">2018 - 2023</time>
+                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Foundation in Computer Science</h3>
+                <p class="text-base font-normal text-stone-600 dark:text-stone-400">Graduated with Distinction from Ontario Tech University with a Bachelor of Science in Computer Science, building a strong foundation for my career in technology.</p>
+                <!-- Expandable Details -->
+                <div class="timeline-details">
+                    <p class="font-semibold">Co-op Programs</p>
+                    <ul>
+                        <li>Web Development Intern - CIBC - September 2021 - December 2021 </li>
+                        <li>Software Engineer Intern - Commonwell Mutual Insurance Group - May 2021 - Aug 2021 </li>
+                        <li>Technology Assistant - Ontario Tech University - June 2020-April 2021</li>
+                    </ul>
+                    <div class="zoom-container">
+                    <img src="degree.jpg" alt="Excellence in Automation Award">
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot">
-                             <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                        </div>
-                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">2018 - 2023</time>
-                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Foundation in Computer Science</h3>
-                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Graduated with Distinction from Ontario Tech University with a Bachelor of Science in Computer Science, building a strong foundation for my career in technology.</p>
-                    </div>
+                </div>
+            </div>
                 </div>
             </div>
         </section>
@@ -322,35 +450,101 @@
                 <div id="filters" class="flex justify-center flex-wrap gap-4 mb-12">
                     <button class="filter-btn active px-4 py-2 rounded-md font-semibold bg-amber-600 text-white" data-filter="all">All</button>
                     <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="automation">Automation</button>
+                     <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="python">Python</button>
                     <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="dataviz">Data Viz</button>
                     <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="bi">BI</button>
+                     <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="api">API</button>
+                    <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="react.js">React.js</button>
+                    <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="flask">Flask</button>
+                    <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="express.js">Express.js</button>
+                    <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="node.js">Node.js</button>
+                    <button class="filter-btn px-4 py-2 rounded-md font-semibold bg-stone-200 dark:bg-stone-800" data-filter="mongodb">MongoDB</button>
+
                 </div>
                 
                 <div class="relative group">
                     <!-- Project Grid -->
                     <div id="project-grid" class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar snap-x snap-mandatory scroll-smooth px-6 md:px-0">
+                        <!-- Project Card 0 -->
+
+                        <div class="project-card w-[85%] sm:w-80 md:w-96 flex-shrink-0 snap-center cursor-pointer bg-white dark:bg-stone-900 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden" 
+                             data-project-id="flashcard-generator"
+                             data-category="api react.js flask mongodb"
+                             data-title="Flashcard Generator"
+                             data-video-url="https://www.youtube.com/embed/uq2PnUZn8AY?si=UhtDRCbQ1uK-R8oo"
+                             data-github-url="https://github.com/anannyasaha/AI-FlashCard-Generator"
+                             data-tech="React.js, Flask, TypeScript, CSS, HTML5"
+                             data-description="Flashcard Generator is a full-stack web application for generating, viewing, and saving flashcards from uploaded documents. It streamlines study and memorization by leveraging modern web technologies and artificial intelligence to create effective flashcards. <br> The backend uses a Python Flask API for file uploads, text extraction, AI integration, and interaction with a MongoDB database. The React frontend provides a responsive interface for users to create, review, and manage flashcards."
+                             data-outcomes="Document upload for PDF and DOCX files | Automated flashcard generation via AI and text extraction | Duplicate prevention by cross-checking with stored flashcards | Interactive flashcard navigation, flipping, and saving | Database persistence for saved cards including question, answer, and file reference | Responsive, mobile-friendly React frontend"
+                             data-learnings="Through developing this Flashcard Generator project, I gained extensive hands-on experience in full-stack development by successfully connecting a Flask backend with a React.js frontend, mastering the intricacies of API communication and data flow between different technology stacks. I developed proficiency in integrating OpenAI API services, learning how to craft effective prompts for AI-powered content generation and efficiently parse JSON responses to extract meaningful question-answer pairs from uploaded documents. The project deepened my understanding of modern web development practices, including implementing smooth animations using Framer Motion to create an engaging flashcard flipping experience, managing state in React for dynamic user interactions, and establishing secure database operations with MongoDB for persistent data storage. Additionally, I enhanced my skills in file processing by working with PyPDF2 and python-docx libraries to extract text from various document formats, while also implementing robust error handling and user feedback mechanisms throughout the application. This project provided valuable experience in building production-ready applications that seamlessly integrate multiple technologies to deliver a cohesive user experience, from document upload and AI processing to interactive flashcard management with smooth animations and responsive design.">
+                            <img src="AITool.png" alt="AI FlashCard Generator" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">AI FlashCard Generator</h3>
+                                <p class="text-stone-600 dark:text-stone-400 mb-4">AI-powered full-stack flashcard generator that transforms PDF/DOCX into interactive study cards using Flask, React & MongoDB with animations.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tag text-xs font-semibold bg-lime-100 text-lime-800 px-2 py-1 rounded-full">#API</span>
+                                    <span class="tag text-xs font-semibold bg-teal-100 text-teal-800 px-2 py-1 rounded-full">#React.js</span>
+                                     <span class="tag text-xs font-semibold bg-orange-100 text-orange-800 px-2 py-1 rounded-full">#Flask</span>
+                                     <span class="tag text-xs font-semibold bg-fuchsia-100 text-fuchsia-800 px-2 py-1 rounded-full">#Mongodb</span>
+                                </div>
+                                <div class="mt-4 flex justify-between items-center">
+                                    <a href="#" class="view-project-link font-semibold text-amber-600 dark:text-amber-500 hover:underline">View Project &rarr;</a>
+                                    <a href="https://github.com/anannyasaha/AI-FlashCard-Generator" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="project-card w-[85%] sm:w-80 md:w-96 flex-shrink-0 snap-center cursor-pointer bg-white dark:bg-stone-900 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden" 
+                             data-project-id="task-management-app"
+                             data-category="mongodb react.js node.js express.js"
+                             data-title="Task Management App"
+                             data-video-url="https://www.youtube.com/embed/BOhew27FWKc?si=ghlvzu3Tk7wcWjCB"
+                             data-github-url="https://github.com/anannyasaha/TaskManagementSystem"
+                             data-tech="React.js, Node.js, Express.js, MongoDB, TypeScript, CSS, HTML5"
+                             data-description="This is a full-stack application that allows users to register, sign in, create tasks, and interact with them in real-time. The backend is built using Node.js, Express, and MongoDB, while the frontend uses React.js for a smooth user interface. The system supports roles such as Manager and Employee, with different permissions for creating, editing, and viewing tasks."
+                             data-outcomes="Developed a centralized platform that provides real-time task visibility for both employees and managers | Engineered role-based dashboards that tailor the user experience to specific responsibilities | Implemented instant notifications for key actions like task assignment and deletion, ensuring clear communication | Created a hierarchical registration system that mirrors a real-world organizational structure."
+                             data-learnings="This project was a deep dive into building a collaborative, full-stack application. I learned how to implement a real-time notification system to keep all users in sync and honed my skills in creating a role-based API to manage complex permissions for different user types. It was also a great experience in designing a relational database schema that could effectively model a company's hierarchical structure.">
+                            <img src="CRUD.png" alt="Task Management App" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Full Stack Task Management System </h3>
+                                <p class="text-stone-600 dark:text-stone-400 mb-4">A full-stack task management app for modern teams, enabling real-time collaboration and role-based control.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tag text-xs font-semibold bg-pink-100 text-pink-800 px-2 py-1 rounded-full">#Node.js</span>
+                                    <span class="tag text-xs font-semibold bg-teal-100 text-teal-800 px-2 py-1 rounded-full">#React.js</span>
+                                     <span class="tag text-xs font-semibold bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full">#Express.js</span>
+                                     <span class="tag text-xs font-semibold bg-fuchsia-100 text-fuchsia-800 px-2 py-1 rounded-full">#Mongodb</span>
+                                </div>
+                                <div class="mt-4 flex justify-between items-center">
+                                    <a href="#" class="view-project-link font-semibold text-amber-600 dark:text-amber-500 hover:underline">View Project &rarr;</a>
+                                    <a href="https://github.com/anannyasaha/AI-FlashCard-Generator" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Project Card 1 -->
                         <div class="project-card w-[85%] sm:w-80 md:w-96 flex-shrink-0 snap-center cursor-pointer bg-white dark:bg-stone-900 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden" 
                              data-project-id="staffing-request-tool"
                              data-category="automation"
                              data-title="Staffing Request Tool"
-                             data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                             data-video-url="https://www.youtube.com/embed/sQqfoyU7Ilk?si=b-JbVtdvOJk5W0ZC"
                              data-github-url="https://github.com"
                              data-tech="PowerApps,Power Automate,SharePoint,Dataverse,Power BI"
                              data-description="This project involved designing and deploying a comprehensive PowerApps solution to replace a manual, inefficient staffing approval process. The tool integrates Microsoft Forms, Teams Approvals, and SharePoint to create a secure, automated, multi-level approval workflow."
-                             data-outcomes="• Increased workflow efficiency by 38%.|• Established a secure, centralized data hub on SharePoint with role-based permissions.|• Migrated from legacy MS Access to a scalable solution integrated with Power BI for real-time insights.|• Refined UI/UX based on positive feedback from cross-functional user acceptance testing."
+                             data-outcomes="• Increased workflow efficiency by 78%.|• Established a secure, centralized data hub on SharePoint with role-based permissions.|• Migrated from legacy MS Access to a scalable solution integrated with Power BI for real-time insights.|• Refined UI/UX based on positive feedback from cross-functional user acceptance testing."
                              data-learnings="This project reinforced the importance of user-centered design in automation. Conducting thorough user acceptance testing was critical for refining the workflow and ensuring the final tool met the nuanced needs of managers and executives, leading to high adoption rates.">
-                            <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Automation+Tool" alt="Staffing Request Tool" class="w-full h-48 object-cover">
+                            <img src="automation.png" alt="Staffing Request Tool" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h3 class="text-xl font-bold mb-2">Staffing Request Tool</h3>
-                                <p class="text-stone-600 dark:text-stone-400 mb-4">Streamlined a complex staffing approval process to improve workflow efficiency by 38%.</p>
+                                <p class="text-stone-600 dark:text-stone-400 mb-4">Streamlined a complex staffing approval process to improve workflow efficiency by 78%.</p>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="tag text-xs font-semibold bg-amber-100 text-amber-800 px-2 py-1 rounded-full">#automation</span>
                                     <span class="tag text-xs font-semibold bg-sky-100 text-sky-800 px-2 py-1 rounded-full">#power-platform</span>
                                 </div>
                                 <div class="mt-4 flex justify-between items-center">
                                     <a href="#" class="view-project-link font-semibold text-amber-600 dark:text-amber-500 hover:underline">View Project &rarr;</a>
-                                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
+                                    <a href="https://github.com/anannyasaha/Staffing-Request-Approval-System" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
                                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                                     </a>
                                 </div>
@@ -362,13 +556,13 @@
                              data-project-id="staffing-analytics-dashboard"
                              data-category="dataviz bi"
                              data-title="Employee Staffing Analytics Dashboard"
-                             data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                             data-github-url="https://github.com"
+                             data-video-url="https://www.youtube.com/embed/R_FU5CKuZwo?si=40EEegX5C-wwxXo2"
+                             data-github-url="https://github.com/anannyasaha/Employee-Staffing-Analytics-Dashboard"
                              data-tech="Power BI,SQL,PowerQuery,Python"
                              data-description="To address challenges in headcount tracking, I developed a dynamic Microsoft Power BI dashboard. This solution automates data integration from multiple sources using SQL, PowerQuery, and Python to provide real-time, accurate analytics for staffing and resource planning."
                              data-outcomes="• Optimized FTE allocation and improved headcount tracking for business objectives.|• Automated multi-source data integration to ensure real-time accuracy.|• Supported effective resource planning by validating staffing forecasts with solution-focused testing.|• Delivered actionable insights through dashboards designed in collaboration with key stakeholders."
                              data-learnings="Successfully integrating disparate data sources was a key challenge. This project taught me the value of robust data validation at each step of the pipeline (ETL) to ensure the final visualizations are both accurate and trustworthy for executive decision-making.">
-                            <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=BI+Dashboard" alt="Staffing Analytics Dashboard" class="w-full h-48 object-cover">
+                            <img src="BIDashboard.png" alt="Staffing Analytics Dashboard" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h3 class="text-xl font-bold mb-2">Staffing Analytics Dashboard</h3>
                                 <p class="text-stone-600 dark:text-stone-400 mb-4">Developed a Microsoft Power BI dashboard to optimize FTE allocation and improve headcount tracking.</p>
@@ -379,7 +573,7 @@
                                 </div>
                                 <div class="mt-4 flex justify-between items-center">
                                     <a href="#" class="view-project-link font-semibold text-amber-600 dark:text-amber-500 hover:underline">View Project &rarr;</a>
-                                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
+                                    <a href="https://github.com/anannyasaha/Employee-Staffing-Analytics-Dashboard" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
                                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                                     </a>
                                 </div>
@@ -391,13 +585,12 @@
                              data-project-id="org-chart-tool"
                              data-category="dataviz automation"
                              data-title="Enterprise Organization Chart Tool"
-                             data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                             data-github-url="https://github.com"
-                             data-tech="Python (Pandas),Excel,Power BI"
+                             data-video-url="https://www.youtube.com/embed/hGRZhssTbzk?si=0f-fy_IV7nS4eYti"
+                             data-tech="Python (Pandas),Excel,HTML,CSS,JavaScript"
                              data-description="This project addressed the need for an accurate, scalable way to visualize the company's structure for planning and analysis. I developed robust data pipelines using Python to clean, transform, and process large Excel datasets, feeding into an automated analytics tool for generating org charts."
                              data-outcomes="• Created a scalable tool that ensured accuracy for critical workforce planning and pay equity analysis.|• Developed robust data pipelines to handle complex data cleaning and transformation tasks.|• Delivered a solution that was recognized with the 'Innovator Award' for its impact on the organization.|• Provided clear visualizations for executive decision-making."
                              data-learnings="This project highlighted the power of Python for scalable data preparation. Handling inconsistencies in large, manually-maintained Excel files taught me advanced data cleaning techniques and the importance of building resilient pipelines that can adapt to imperfect source data.">
-                            <img src="https://placehold.co/600x400/ec4899/ffffff?text=Org+Chart+Tool" alt="Enterprise Org Chart Tool" class="w-full h-48 object-cover">
+                            <img src="OrgChart.png" alt="Enterprise Org Chart Tool" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h3 class="text-xl font-bold mb-2">Enterprise Org Chart Tool</h3>
                                 <p class="text-stone-600 dark:text-stone-400 mb-4">Created an award-winning analytics tool to generate org charts for workforce planning and pay equity analysis.</p>
@@ -417,17 +610,17 @@
                         <!-- New Project Card 4 -->
                         <div class="project-card w-[85%] sm:w-80 md:w-96 flex-shrink-0 snap-center cursor-pointer bg-white dark:bg-stone-900 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                              data-project-id="financial-reporting-automation"
-                             data-category="bi"
-                             data-title="Financial Reporting Automation"
-                             data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                             data-category="bi python"
+                             data-title="Python Automation Suite"
+                             data-video-url="https://www.youtube.com/embed/QrtbTp0w8fQ?si=C--dZ0roNeiIgWmT"
                              data-github-url="https://github.com"
                              data-tech="Python,SQL,Azure"
                              data-description="Automated the generation of monthly financial reports, reducing manual effort and improving data accuracy by creating a Python-based ETL pipeline."
                              data-outcomes="• Reduced report generation time by 65%.|• Improved data accuracy and consistency across reports."
                              data-learnings="Learned to handle large financial datasets efficiently and the importance of robust error checking in data pipelines.">
-                            <img src="https://placehold.co/600x400/10b981/ffffff?text=Financial+Automation" alt="Financial Reporting Automation" class="w-full h-48 object-cover">
+                            <img src="python.png" alt="Python Automation Suite" class="w-full h-48 object-cover">
                             <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2">Financial Reporting Automation</h3>
+                                <h3 class="text-xl font-bold mb-2">Python Automation Suite</h3>
                                 <p class="text-stone-600 dark:text-stone-400 mb-4">Python-based pipeline for automating monthly financial reports.</p>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="tag text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">#bi</span>
@@ -503,43 +696,43 @@
         <section id="lab" class="py-20 section">
             <div class="container mx-auto px-6 md:px-0">
                 <h2 class="text-4xl font-bold text-center mb-4 font-display">The Lab</h2>
-                <p class="text-center text-lg text-stone-600 dark:text-stone-400 mb-12">A peek into my digital sketchbook of ideas, experiments, and code snippets.</p>
+                <p class="text-center text-lg text-stone-600 dark:text-stone-400 mb-12">A peek into my current ideas, experiments, and research.</p>
                 <div class="relative group">
                     <div id="lab-grid" class="flex gap-4 overflow-x-auto pb-4 max-w-6xl mx-auto hide-scrollbar snap-x snap-mandatory scroll-smooth px-6 md:px-0">
                         <div class="lab-item w-[85%] sm:w-80 flex-shrink-0 snap-center p-4 bg-white dark:bg-stone-900 rounded-lg shadow-md">
-                            <h4 class="font-bold mb-2">🤖 Exploring Anomaly Detection</h4>
+                            <h4 class="font-bold mb-2">Exploring AI chatbots in Azure</h4>
                             <p class="text-sm text-stone-600 dark:text-stone-400">
-                                Experimenting with Azure AI fundamentals to build a model.
+                                Building fundamental understanding of Azure by passing AI-900 Certification.
                             </p>
                         </div>
                          <div class="lab-item w-[85%] sm:w-80 flex-shrink-0 snap-center p-4 bg-white dark:bg-stone-900 rounded-lg shadow-md">
-                            <h4 class="font-bold mb-2">🤖 Exploring Anomaly Detection</h4>
+                            <h4 class="font-bold mb-2">Participating in Hackathon in OPS : Be a Data Hero</h4>
                             <p class="text-sm text-stone-600 dark:text-stone-400">
-                                Experimenting with Azure AI fundamentals to build a model.                            </p>
+                                Solving real life data problems in Ontario Public Service featuring Microsoft Power Platform, Fabric, Azure and Databrick in November 2025</p>
                         </div>
                          <div class="lab-item w-[85%] sm:w-80 flex-shrink-0 snap-center p-4 bg-white dark:bg-stone-900 rounded-lg shadow-md">
-                            <h4 class="font-bold mb-2">🤖 Exploring Anomaly Detection</h4>
+                            <h4 class="font-bold mb-2">Building Mobile Apps using Flutter and Dart</h4>
                             <p class="text-sm text-stone-600 dark:text-stone-400">
-                                Experimenting with Azure AI fundamentals to build a model.</p>
+                                Using Computer Vision technology to scan receipts and bills to split it among friends.</p>
                         </div>
                         <!-- New Lab Item 1 -->
                          <div class="lab-item w-[85%] sm:w-80 flex-shrink-0 snap-center p-4 bg-white dark:bg-stone-900 rounded-lg shadow-md">
-                            <h4 class="font-bold mb-2">🤖 Exploring Anomaly Detection</h4>
+                            <h4 class="font-bold mb-2"> Supporting Dynamics 365 Apps</h4>
                             <p class="text-sm text-stone-600 dark:text-stone-400">
-                                Experimenting with Azure AI fundamentals to build a model.</p>
+                                Enhancing and troubleshooting Dynamics 365 apps workflows to streamline its productivity since 2022 </p>
                         </div>
                         <!-- New Lab Item 2 -->
                          <div class="lab-item w-[85%] sm:w-80 flex-shrink-0 snap-center p-4 bg-white dark:bg-stone-900 rounded-lg shadow-md">
-                            <h4 class="font-bold mb-2">🤖 Exploring Anomaly Detection</h4>
+                            <h4 class="font-bold mb-2">Editing Videos and Photos as a Hobby</h4>
                             <p class="text-sm text-stone-600 dark:text-stone-400">
-                                Experimenting with Azure AI fundamentals to build a model.                            </p>
+                                Creating Content as a Tech creator to share my journey and work in Social media.</p>
                             </p>
                         </div>
                         <!-- New Lab Item 3 -->
                          <div class="lab-item w-[85%] sm:w-80 flex-shrink-0 snap-center p-4 bg-white dark:bg-stone-900 rounded-lg shadow-md">
-                            <h4 class="font-bold mb-2">🤖 Exploring Anomaly Detection</h4>
+                            <h4 class="font-bold mb-2">Researching about Agentic AI</h4>
                             <p class="text-sm text-stone-600 dark:text-stone-400">
-                                Experimenting with Azure AI fundamentals to build a model.</p>
+                                Learning about Agentic AI modelling and getting excited to build Agentic AI models. </p>
                             </p>
                         </div>
                     </div>
@@ -563,10 +756,20 @@
                 <p class="text-center text-lg text-stone-600 dark:text-stone-400 mb-12">The tools and technologies I use to bring ideas to life.</p>
                 <div class="max-w-4xl mx-auto space-y-8">
                     <div>
-                        <h3 class="font-semibold text-lg mb-4 text-center">Languages & Databases</h3>
+                        <h3 class="font-semibold text-lg mb-4 text-center">Languages, Databases and Frameworks</h3>
                         <div class="flex flex-wrap gap-4 justify-center">
                             <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">Python (Numpy, Pandas)</span>
+                            <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">C++</span>
+                            <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">Java</span>
+                            <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">JavaScript</span>
+                            <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">Dart</span>
+                            <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">TypeScript</span>
                             <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">SQL</span>
+                            <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">MongoDB</span>
+                            <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">React.js</span>
+                            <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">Express.js</span>
+                            
+                        
                         </div>
                     </div>
                     <div>
@@ -577,6 +780,7 @@
                              <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">Dynamics 365</span>
                              <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">Cognos</span>
                              <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">SharePoint</span>
+                              <span class="p-2 px-4 rounded-md bg-stone-200 dark:bg-stone-800">PowerBI</span>
                         </div>
                     </div>
                     <div>
@@ -609,20 +813,6 @@
                     </a>
                 </div>
                 <a href="mailto:anannya.saha55@gmail.com" class="text-lg text-amber-600 dark:text-amber-500 hover:underline mb-8 inline-block"> anannya.saha55@gmail.com</a>
-                <div class="mt-8">
-                    <p class="mb-4 text-sm text-stone-600 dark:text-stone-400">Download a resume tailored for:</p>
-                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                        <a href="Data Engineer Resume Anannya Saha.pdf" download="Anannya_Saha_Resume_Software_Engineer.pdf" class="w-full sm:w-auto bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 px-6 py-3 rounded-md font-semibold hover:bg-stone-700 dark:hover:bg-stone-300 transition-all duration-300">
-                            Software Engineer
-                        </a>
-                        <a href="Data Engineer Resume Anannya Saha.pdf" download="Anannya_Saha_Resume_AI_ML_Engineer.pdf" class="w-full sm:w-auto bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 px-6 py-3 rounded-md font-semibold hover:bg-stone-700 dark:hover:bg-stone-300 transition-all duration-300">
-                            AI/ML Engineer
-                        </a>
-                        <a href="Data Engineer Resume Anannya Saha.pdf" download="Anannya_Saha_Resume_Data_Engineer.pdf" class="w-full sm:w-auto bg-stone-800 text-white dark:bg-stone-200 dark:text-stone-900 px-6 py-3 rounded-md font-semibold hover:bg-stone-700 dark:hover:bg-stone-300 transition-all duration-300">
-                            Data Engineer
-                        </a>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
@@ -869,7 +1059,7 @@
             if (footer) {
                 footerObserver.observe(footer);
             }
-
+            
             // --- Horizontal Scroll with Buttons & Dots ---
             function setupCarousel(containerId, leftBtnId, rightBtnId, dotsId) {
                 const container = document.getElementById(containerId);
@@ -957,12 +1147,35 @@
             }
 
             setupCarousel('project-grid', 'project-scroll-left', 'project-scroll-right', 'project-dots');
-            setupCarousel('lab-grid', null, null, 'lab-dots');
+            setupCarousel('lab-grid', 'lab-scroll-left','lab-scroll-right', 'lab-dots');
 
+            const toggleDetails = (button) => {
+            // Find the parent .timeline-item and then the .timeline-details within it
+            const details = button.parentElement.querySelector('.timeline-details');
+            const iconPlus = button.querySelector('.icon-plus');
+            const iconMinus = button.querySelector('.icon-minus');
+
+            // Check if details are currently shown
+            if (details.style.display === 'block') {
+            // Hide details and swap icons
+            details.style.display = 'none';
+            iconPlus.classList.remove('hidden');
+            iconMinus.classList.add('hidden');
+            } else {
+            // Show details and swap icons
+            details.style.display = 'block';
+            iconPlus.classList.add('hidden');
+            iconMinus.classList.remove('hidden');
+            }
+        };
+
+        // --- IMPORTANT ---
+        // Attach the function to the window object so onclick can find it
+        window.toggleDetails = toggleDetails;
             // --- Typing Animation for Hero Subtitle ---
             const typingSubtitle = document.getElementById('typing-subtitle');
             if (typingSubtitle) {
-                const roles = ["Data Engineer", "Software Developer", "AI/ML Enthusiast", "BI Developer"];
+                const roles = ["Full Stack Developer", "Data Analyst", "AI/ML Enthusiast", "Microsoft App Developer"];
                 let roleIndex = 0;
                 let charIndex = 0;
                 let isDeleting = false;
