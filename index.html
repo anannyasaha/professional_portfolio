@@ -57,16 +57,11 @@
         cursor: pointer; /* Makes it look clickable */
         transition: background-color 0.2s;
     }
-    .dark .timeline-dot {
-        background-color: #1c1917; /* stone-900 */
-        border-color: #57534e; /* stone-600 */
-    }
+    
     .timeline-dot:hover {
         background-color: #f5f5f4; /* stone-100 */
     }
-    .dark .timeline-dot:hover {
-        background-color: #292524; /* stone-800 */
-    }
+    
     .timeline-dot svg {
         width: 1rem;
         height: 1rem;
@@ -80,9 +75,8 @@
         padding-left: 0.5rem;
         color: #57534e; /* stone-600 */
     }
-    .dark .timeline-details {
-        color: #d6d3d1; /* stone-300 */
-    }
+    
+    
     .timeline-details ul {
         list-style-type: disc;
         padding-left: 1.5rem;
@@ -222,11 +216,6 @@
             </nav>
 
             <div class="flex items-center gap-4 justify-self-end col-start-3">
-                 <!-- Theme Toggle Button -->
-                <button id="theme-toggle" type="button" class="p-2.5 rounded-full text-stone-900 dark:text-stone-100 transition-colors">
-                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 7.072l.707-.707a1 1 0 10-1.414-1.414l-.707.707a1 1 0 101.414 1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                </button>
                 
                 <!-- Mobile Menu Button (Hamburger) -->
                 <button id="mobile-menu-btn" class="md:hidden p-2.5">
@@ -256,7 +245,7 @@
                         <h1 class="text-4xl md:text-6xl font-bold tracking-tighter font-display">
                             Building Intelligent Solutions.
                         </h1>
-                        <p class="mt-4 text-2xl md:text-3xl text-amber-600 dark:text-amber-500 h-10 md:h-12 flex justify-center md:justify-start items-center">
+                        <p class="mt-4 text-2xl md:text-3xl text-amber-600 dark:text-amber-500 min-h-[2.5rem] md:min-h-[3rem] flex flex-wrap justify-center md:justify-start items-center">
                            <span class="mr-2">I'm a</span>
                            <span id="typing-subtitle" class="font-semibold"></span>
                            <span class="blinking-cursor"></span>
@@ -312,7 +301,7 @@
                 <p class="text-center text-lg text-stone-600 dark:text-stone-400 mb-12">A timeline of key milestones in my career.</p>
                 <div class="max-w-3xl mx-auto">
                    <div class="timeline-item">
-                <div class="timeline-dot" onclick="toggleDetails(this)">
+                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
                     <!-- Plus Icon -->
                     <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
                     <!-- Minus Icon (Hidden) -->
@@ -322,7 +311,7 @@
                 <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Developing Enterprise Solutions</h3>
                 <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Senior Applications Developer, I co-led the development of an Audit Case Management System in Dynamics 365 and optimized backend workflows with Python data validation scripts.</p>
                 <!-- Expandable Details -->
-                <div class="timeline-details">
+                <div class="timeline-details text-stone-600 dark:text-stone-300">
                     <p class="font-semibold">Roles & Duties:</p>
                     <ul>
                         <li>Optimized backend workflows by developing Python data validation scripts, increasing the efficiency of the finance reporting pipeline by 46%.</li>
@@ -333,7 +322,7 @@
                 </div>
             </div>
                     <div class="timeline-item">
-                <div class="timeline-dot" onclick="toggleDetails(this)">
+                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
                     <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
                     <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
                 </div>
@@ -341,7 +330,7 @@
                 <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Excellence in Automation Award</h3>
                 <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Excellence Award for transforming manual workforce approvals using a combination of Python and Power Automate.</p>
                 <!-- Expandable Details -->
-                <div class="timeline-details">
+                <div class="timeline-details text-stone-600 dark:text-stone-300">
                     <p class="font-semibold">Achievement Details:</p>
                     <ul>
                         <li>Designed a fully automated approval workflow, replacing a multi-step manual process.</li>
@@ -354,17 +343,17 @@
                 </div>
             </div>
                      <div class="timeline-item">
-                <div class="timeline-dot" onclick="toggleDetails(this)">
+                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
                     <!-- Plus Icon -->
                     <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
                     <!-- Minus Icon (Hidden) -->
                     <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
                 </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">JULY 2024 - APRIL 2025</time>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">JULY 2024 - APRIL 2025</time>
                 <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Bridging Policy and Technology</h3>
                 <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Workforce Policy Analyst, I developed the automated staffing request tool and built interactive Power BI dashboards for workforce forecasting and policy analysis.</p>
                 <!-- Expandable Details -->
-                <div class="timeline-details">
+                <div class="timeline-details text-stone-600 dark:text-stone-300">
                     <p class="font-semibold">Roles & Duties:</p>
                     <ul>
                         <li>Developed automated staffing request tool using Microsoft Power Automate, integrating Teams Approvals, SharePoint, and PowerBI to increase workflow efficiency by 78%.</li>
@@ -375,15 +364,15 @@
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot" onclick="toggleDetails(this)">
+                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
                     <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
                     <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
                 </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">DECEMBER 2023</time>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">DECEMBER 2023</time>
                 <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Recognition for Innovation</h3>
                 <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Innovator Award for creating an enterprise analytics tool to generate organization charts from complex datasets.</p>
                 <!-- Expandable Details -->
-                <div class="timeline-details">
+                <div class="timeline-details text-stone-600 dark:text-stone-300">
                     <p class="font-semibold">Achievement Details:</p>
                     <ul>
                         <li>Delivered a scalable analytics tool that increased accuracy in workforce planning and pay equity analysis by 80% over previous manual methods.</li>
@@ -397,17 +386,17 @@
             </div>
                      
                     <div class="timeline-item">
-                <div class="timeline-dot" onclick="toggleDetails(this)">
+                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
                     <!-- Plus Icon -->
                     <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
                     <!-- Minus Icon (Hidden) -->
                     <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
                 </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">MAY 2022 - JULY 2024</time>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">MAY 2022 - JULY 2024</time>
                 <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Diving into Data Automation</h3>
                 <p class="text-base font-normal text-stone-600 dark:text-stone-400">Began my career as a Workforce Data Modelling Analyst, automating Excel reporting with Python to achieve a 65% faster workflow and developing robust data pipelines.</p>
                 <!-- Expandable Details -->
-                <div class="timeline-details">
+                <div class="timeline-details text-stone-600 dark:text-stone-300">
                     <p class="font-semibold">Roles & Duties:</p>
                     <ul>
                         <li>Slashed report generation time by over 98% by automating manual Excel processes with Python, reducing a 3-hour task to under 2 minutes</li>
@@ -416,15 +405,15 @@
                 </div>
             </div>
                     <div class="timeline-item">
-                <div class="timeline-dot" onclick="toggleDetails(this)">
+                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
                     <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
                     <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
                 </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">2018 - 2023</time>
+                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">2018 - 2023</time>
                 <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Foundation in Computer Science</h3>
                 <p class="text-base font-normal text-stone-600 dark:text-stone-400">Graduated with Distinction from Ontario Tech University with a Bachelor of Science in Computer Science, building a strong foundation for my career in technology.</p>
                 <!-- Expandable Details -->
-                <div class="timeline-details">
+                <div class="timeline-details text-stone-600 dark:text-stone-300">
                     <p class="font-semibold">Co-op Programs</p>
                     <ul>
                         <li>Web Development Intern - CIBC - September 2021 - December 2021 </li>
@@ -532,7 +521,7 @@
                              data-github-url="https://github.com"
                              data-tech="PowerApps,Power Automate,SharePoint,Dataverse,Power BI"
                              data-description="This project involved designing and deploying a comprehensive PowerApps solution to replace a manual, inefficient staffing approval process. The tool integrates Microsoft Forms, Teams Approvals, and SharePoint to create a secure, automated, multi-level approval workflow."
-                             data-outcomes="• Increased workflow efficiency by 78%.|• Established a secure, centralized data hub on SharePoint with role-based permissions.|• Migrated from legacy MS Access to a scalable solution integrated with Power BI for real-time insights.|• Refined UI/UX based on positive feedback from cross-functional user acceptance testing."
+                             data-outcomes="Increased workflow efficiency by 78%.| Established a secure, centralized data hub on SharePoint with role-based permissions.| Migrated from legacy MS Access to a scalable solution integrated with Power BI for real-time insights.| Refined UI/UX based on positive feedback from cross-functional user acceptance testing."
                              data-learnings="This project reinforced the importance of user-centered design in automation. Conducting thorough user acceptance testing was critical for refining the workflow and ensuring the final tool met the nuanced needs of managers and executives, leading to high adoption rates.">
                             <img src="automation.png" alt="Staffing Request Tool" class="w-full h-48 object-cover">
                             <div class="p-6">
@@ -560,7 +549,7 @@
                              data-github-url="https://github.com/anannyasaha/Employee-Staffing-Analytics-Dashboard"
                              data-tech="Power BI,SQL,PowerQuery,Python"
                              data-description="To address challenges in headcount tracking, I developed a dynamic Microsoft Power BI dashboard. This solution automates data integration from multiple sources using SQL, PowerQuery, and Python to provide real-time, accurate analytics for staffing and resource planning."
-                             data-outcomes="• Optimized FTE allocation and improved headcount tracking for business objectives.|• Automated multi-source data integration to ensure real-time accuracy.|• Supported effective resource planning by validating staffing forecasts with solution-focused testing.|• Delivered actionable insights through dashboards designed in collaboration with key stakeholders."
+                             data-outcomes=" Optimized FTE allocation and improved headcount tracking for business objectives.| Automated multi-source data integration to ensure real-time accuracy.| Supported effective resource planning by validating staffing forecasts with solution-focused testing.| Delivered actionable insights through dashboards designed in collaboration with key stakeholders."
                              data-learnings="Successfully integrating disparate data sources was a key challenge. This project taught me the value of robust data validation at each step of the pipeline (ETL) to ensure the final visualizations are both accurate and trustworthy for executive decision-making.">
                             <img src="BIDashboard.png" alt="Staffing Analytics Dashboard" class="w-full h-48 object-cover">
                             <div class="p-6">
@@ -588,7 +577,7 @@
                              data-video-url="https://www.youtube.com/embed/hGRZhssTbzk?si=0f-fy_IV7nS4eYti"
                              data-tech="Python (Pandas),Excel,HTML,CSS,JavaScript"
                              data-description="This project addressed the need for an accurate, scalable way to visualize the company's structure for planning and analysis. I developed robust data pipelines using Python to clean, transform, and process large Excel datasets, feeding into an automated analytics tool for generating org charts."
-                             data-outcomes="• Created a scalable tool that ensured accuracy for critical workforce planning and pay equity analysis.|• Developed robust data pipelines to handle complex data cleaning and transformation tasks.|• Delivered a solution that was recognized with the 'Innovator Award' for its impact on the organization.|• Provided clear visualizations for executive decision-making."
+                             data-outcomes="Created a scalable tool that ensured accuracy for critical workforce planning and pay equity analysis.| Developed robust data pipelines to handle complex data cleaning and transformation tasks.| Delivered a solution that was recognized with the 'Innovator Award' for its impact on the organization.| Provided clear visualizations for executive decision-making."
                              data-learnings="This project highlighted the power of Python for scalable data preparation. Handling inconsistencies in large, manually-maintained Excel files taught me advanced data cleaning techniques and the importance of building resilient pipelines that can adapt to imperfect source data.">
                             <img src="OrgChart.png" alt="Enterprise Org Chart Tool" class="w-full h-48 object-cover">
                             <div class="p-6">
@@ -600,7 +589,7 @@
                                 </div>
                                 <div class="mt-4 flex justify-between items-center">
                                     <a href="#" class="view-project-link font-semibold text-amber-600 dark:text-amber-500 hover:underline">View Project &rarr;</a>
-                                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
+                                    <a href="https://github.com/anannyasaha/Organization-Chart" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
                                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                                     </a>
                                 </div>
@@ -613,10 +602,10 @@
                              data-category="bi python"
                              data-title="Python Automation Suite"
                              data-video-url="https://www.youtube.com/embed/QrtbTp0w8fQ?si=C--dZ0roNeiIgWmT"
-                             data-github-url="https://github.com"
+                             data-github-url="https://github.com/anannyasaha/Python-Automation-Suite"
                              data-tech="Python,SQL,Azure"
                              data-description="Automated the generation of monthly financial reports, reducing manual effort and improving data accuracy by creating a Python-based ETL pipeline."
-                             data-outcomes="• Reduced report generation time by 65%.|• Improved data accuracy and consistency across reports."
+                             data-outcomes="Automated five key monthly and quarterly workforce reports, significantly reducing manual data processing time by 67%. | Minimized human error by creating a consistent and repeatable data pipeline from raw data extraction to final report generation. | Provided managers with timely and reliable dashboards to monitor critical metrics like FTE usage, turnover, and contract renewals.Provided managers with timely and reliable dashboards to monitor critical metrics like FTE usage, turnover, and contract renewals."
                              data-learnings="Learned to handle large financial datasets efficiently and the importance of robust error checking in data pipelines.">
                             <img src="python.png" alt="Python Automation Suite" class="w-full h-48 object-cover">
                             <div class="p-6">
@@ -628,7 +617,7 @@
                                 </div>
                                 <div class="mt-4 flex justify-between items-center">
                                     <a href="#" class="view-project-link font-semibold text-amber-600 dark:text-amber-500 hover:underline">View Project &rarr;</a>
-                                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
+                                    <a href="https://github.com/anannyasaha/Python-Automation-Suite" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
                                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                                     </a>
                                 </div>
@@ -805,10 +794,10 @@
                     I'm always excited to connect with fellow developers, analysts, and recruiters. If you have a project in mind or just want to talk about data, feel free to reach out.
                 </p>
                 <div class="flex justify-center items-center space-x-6 mb-8">
-                    <a href="https://www.linkedin.com" target="_blank" class="text-stone-500 hover:text-amber-600 transition-colors duration-300">
+                    <a href="https://www.linkedin.com/in/anannya-saha/" target="_blank" class="text-stone-500 hover:text-amber-600 transition-colors duration-300">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
                     </a>
-                    <a href="https://github.com" target="_blank" class="text-stone-500 hover:text-amber-600 transition-colors duration-300">
+                    <a href="https://github.com/anannyasaha" target="_blank" class="text-stone-500 hover:text-amber-600 transition-colors duration-300">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
                     </a>
                 </div>
@@ -830,7 +819,7 @@
                 >
                     Saikat Ghosh
                 </a> 
-                with a passion for innovation and love.
+                with a passion for innovation and creation.
             </p>
         </div>
     </footer>
@@ -1003,38 +992,7 @@
                 }
             });
 
-            // --- Theme Toggler ---
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const darkIcon = document.getElementById('theme-toggle-dark-icon');
-            const lightIcon = document.getElementById('theme-toggle-light-icon');
-
-            const applyTheme = (theme) => {
-                if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                    lightIcon.classList.remove('hidden');
-                    darkIcon.classList.add('hidden');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                    darkIcon.classList.remove('hidden');
-                    lightIcon.classList.add('hidden');
-                }
-            };
-
-            const initialThemeIsDark = document.documentElement.classList.contains('dark');
-            if (initialThemeIsDark) {
-                lightIcon.classList.remove('hidden');
-                darkIcon.classList.add('hidden');
-            } else {
-                darkIcon.classList.remove('hidden');
-                lightIcon.classList.add('hidden');
-            }
-
-            themeToggleBtn.addEventListener('click', () => {
-                const isCurrentlyDark = document.documentElement.classList.contains('dark');
-                applyTheme(isCurrentlyDark ? 'light' : 'dark');
-            });
+         
 
             // --- Back to Top Button Logic ---
             const backToTopButton = document.getElementById('back-to-top');
