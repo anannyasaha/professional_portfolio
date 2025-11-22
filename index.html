@@ -455,6 +455,34 @@
                     <!-- Project Grid -->
                     <div id="project-grid" class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar snap-x snap-mandatory scroll-smooth px-6 md:px-0">
                         <!-- Project Card 0 -->
+                        <div class="project-card w-[85%] sm:w-80 md:w-96 flex-shrink-0 snap-center cursor-pointer bg-white dark:bg-stone-900 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden" 
+                             data-project-id="Fabric Project"
+                             data-category="pyspark bi dataviz fabric"
+                             data-title="Data Analytics Pipeline for Ontario Crime"
+                             data-video-url="https://www.youtube.com/embed/Ri6hywDxJJM?si=h_VSH3yff86V4e5H"
+                             data-github-url="https://github.com/anannyasaha/Crime_Data_Engineering"
+                             data-tech="Fabric, Pyspark, Sql,End_to_End_Pipeline, PowerBi"
+                             data-description="Built a full end-to-end crime analytics pipeline in Microsoft Fabric using PySpark and Delta Lake. Automated data ingestion from StatCan, processed it through Raw, Bronze, Silver, and Gold layers, and designed a star schema with fact/dim tables. Created optimized aggregated tables and an interactive Power BI dashboard to analyze crime trends, clearance rates, and municipal comparisons across Ontario."
+                             data-outcomes="Built a fully automated medallion architecture (Bronze → Silver → Gold) that cleans, standardizes, and structures 5+ years of StatCan crime data. | Designed fact and dimension tables—plus aggregated Gold tables—optimized for fast, scalable reporting in Power BI. | Established a reproducible workflow that ingests new annual crime data with minimal manual effort, ensuring long-term maintainability. | Delivered a Power BI dashboard enabling trend analysis, municipal comparisons, clearance rate monitoring, and AI-driven forecasting."
+                             data-learnings="Worked on building an end-to-end data engineering pipeline using Microsoft Fabric. Gained hands-on experience with the medallion architecture (Bronze → Silver → Gold) to organize and clean data efficiently. Connected Statistics Canada datasets with WDS, transforming raw crime data into curated, structured layers. Designed a semantic model to connect the Gold layer for analytics and reporting, enabling easy insights and visualization across the dataset. Learned best practices in Delta Lake management, schema design, and Delta Merge operations for incremental data updates.">
+                            <img src="Pipeline.png" alt="Data Analytics Pipeline" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Crime Data Analytics</h3>
+                                <p class="text-stone-600 dark:text-stone-400 mb-4">Built an end-to-end Microsoft Fabric pipeline using medallion architecture, connecting Statistics Canada data to WDS and creating a semantic model on the Gold layer for analytics.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tag text-xs font-semibold bg-lime-100 text-rose-800 px-2 py-1 rounded-full">#Pyspark</span>
+                                    <span class="tag text-xs font-semibold bg-purple-100 text-purple-800 px-2 py-1 rounded-full">#data-viz</span>
+                                    <span class="tag text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">#bi</span>
+                                     <span class="tag text-xs font-semibold bg-stone-100 text-stone-800 px-2 py-1 rounded-full">#fabric</span>
+                                </div>
+                                <div class="mt-4 flex justify-between items-center">
+                                    <a href="#" class="view-project-link font-semibold text-amber-600 dark:text-amber-500 hover:underline">View Project &rarr;</a>
+                                    <a href="https://github.com/anannyasaha/AI-FlashCard-Generator" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="project-card w-[85%] sm:w-80 md:w-96 flex-shrink-0 snap-center cursor-pointer bg-white dark:bg-stone-900 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden" 
                              data-project-id="flashcard-generator"
