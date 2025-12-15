@@ -28,81 +28,243 @@
         
         /* Journey Section Timeline */
          .timeline-item {
-        position: relative;
-        padding-left: 3rem;
-        padding-bottom: 2rem;
-        border-left: 2px solid #e7e5e4; /* stone-200 */
-    }
-    .dark .timeline-item {
-        border-left-color: #57534e; /* stone-600 */
-    }
-    .timeline-item:last-child {
-        border-left-color: transparent;
-        padding-bottom: 0;
-    }
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #e7e5e4;
+        }
+        .dark .timeline-item {
+            border-left-color: #57534e;
+        }
+        .timeline-item:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
 
-    /* Clickable Dot & Icon */
-    .timeline-dot {
-        position: absolute;
-        left: -0.8rem; /* Adjusted for centering */
-        top: 0.125rem;
-        height: 1.5rem;
-        width: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #fff; /* white */
-        border-radius: 9999px;
-        border: 2px solid #e7e5e4; /* stone-200 */
-        cursor: pointer; /* Makes it look clickable */
-        transition: background-color 0.2s;
-    }
-    
-    .timeline-dot:hover {
-        background-color: #f5f5f4; /* stone-100 */
-    }
-    
-    .timeline-dot svg {
-        width: 1rem;
-        height: 1rem;
-        color: #d97706; /* amber-600 */
-    }
+        .timeline-dot {
+            position: absolute;
+            left: -0.8rem;
+            top: 0.125rem;
+            height: 1.5rem;
+            width: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border-radius: 9999px;
+            border: 2px solid #e7e5e4;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .dark .timeline-dot {
+            background-color: #1c1917;
+            border-color: #57534e;
+        }
+        
+        .timeline-dot:hover {
+            background-color: #f5f5f4;
+            transform: scale(1.1);
+        }
+        
+        .dark .timeline-dot:hover {
+            background-color: #292524;
+        }
+        
+        .timeline-dot svg {
+            width: 1rem;
+            height: 1rem;
+            color: #d97706;
+        }
 
-    /* Expandable Content Area */
-    .timeline-details {
-        display: none; /* Hidden by default */
-        margin-top: 1rem;
-        padding-left: 0.5rem;
-        color: #57534e; /* stone-600 */
-    }
-    
-    
-    .timeline-details ul {
-        list-style-type: disc;
-        padding-left: 1.5rem;
-        margin-top: 0.5rem;
-    }
-    .timeline-details img {
-        margin-top: 0.75rem;
-        border-radius: 0.5rem;
-        border: 1px solid #d6d3d1; /* stone-300 */
-        max-width: 150px; /* Adjust image size as needed */
-    }
-    .zoom-container {
-    position: relative; /* Establishes a positioning context for the image */
-    display: inline-block; /* Or 'block', depending on your layout */
-    cursor: pointer; /* Changes the cursor to a pointer on hover */
-    }
+        .timeline-header {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            padding: 0.5rem;
+            margin: -0.5rem;
+            border-radius: 0.5rem;
+        }
+        
+        .timeline-header:hover {
+            background-color: rgba(245, 245, 244, 0.5);
+        }
+        
+        .dark .timeline-header:hover {
+            background-color: rgba(41, 37, 36, 0.5);
+        }
 
-/* The image itself */
-    .zoom-container img {
-    display: block;
-    width: 100%; /* Ensures the image fits its container */
-    transition: transform 0.3s ease-in-out; /* Adds a smooth transition effect */
-    }
+        .timeline-details {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+            margin-top: 0;
+        }
+        
+        .timeline-details.expanded {
+            max-height: 2000px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+        
+        .timeline-details ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
 
+        .zoom-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            margin-top: 0.75rem;
+        }
 
+        .zoom-container img {
+            display: block;
+            max-width: 150px;
+            border-radius: 0.5rem;
+            border: 1px solid #d6d3d1;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .dark .zoom-container img {
+            border-color: #57534e;
+        }
+        
+        .zoom-container:hover img {
+            transform: scale(1.1);
+        }
 
+        /* Journey Modal Styles */
+        .journey-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .journey-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .journey-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .journey-modal-overlay.active .journey-modal-content {
+            transform: scale(1);
+        }
+        
+        .journey-modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .journey-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: white;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .dark .journey-modal-close {
+            background: #292524;
+            color: white;
+        }
+        
+        .journey-modal-close:hover {
+            background-color: #f5f5f4;
+        }
+        
+        .dark .journey-modal-close:hover {
+            background-color: #44403c;
+        }
+        
+        .journey-modal-share {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dark .journey-modal-share {
+            background: #292524;
+            color: white;
+        }
+        
+        .journey-modal-share:hover {
+            background-color: #f5f5f4;
+        }
+        
+        .dark .journey-modal-share:hover {
+            background-color: #44403c;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 2000;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         /* Project Filtering & Modal Transitions */
         .project-card {
             transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
@@ -295,140 +457,220 @@
         </section>
 
         <!-- Journey Section -->
-        <section id="journey" class="py-20 section">
-            <div class="container mx-auto px-6 md:px-12">
-                <h2 class="text-4xl font-bold text-center mb-4 font-display">The Journey</h2>
-                <p class="text-center text-lg text-stone-600 dark:text-stone-400 mb-12">A timeline of key milestones in my career.</p>
-                <div class="max-w-3xl mx-auto">
-                   <div class="timeline-item">
-                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
-                    <!-- Plus Icon -->
-                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                    <!-- Minus Icon (Hidden) -->
-                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
+    <section id="journey" class="py-20 section">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-4xl font-bold text-center mb-4 font-display">The Journey</h2>
+            <p class="text-center text-lg text-stone-600 dark:text-stone-400 mb-12">A timeline of key milestones in my career.</p>
+            <div class="max-w-3xl mx-auto">
+                <!-- Timeline Item 0 -->
+                 <div class="timeline-item" data-timeline-id="MAY2025">
+                    <div class="timeline-dot">
+                        <svg class="icon-plus" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                        </svg>
+                        <svg class="icon-minus hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-header">
+                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">DECEMBER 2025</time>
+                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Runnersup in OPS Hackathon - Powered by Microsoft</h3>
+                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Runners-Up position in the Data Innovation category for building an automated, AI-driven analytics pipeline and interactive crime insights dashboard for Ontario’s justice sector.</p>
+                    </div>
+                    <div class="timeline-details">
+                        <p class="font-semibold text-stone-900 dark:text-white">Roles & Duties:</p>
+                        <ul class="text-stone-600 dark:text-stone-400">
+                            <li>Designed and implemented an end-to-end automated data pipeline in Microsoft Fabric to ingest, clean, standardize, and store large-scale StatsCan crime datasets with minimal manual intervention.</li>
+                            <li>Developed interactive Power BI dashboards and advanced data visualizations, enabling justice sector users to explore crime trends across 218 municipalities with filters for demographics, clearance rates, and offence types.</li>
+                            <li>Led data modeling, insight generation, and trend analysis, including comparative analysis and future crime forecasting to support evidence-based decision-making and resource allocation.</li>
+                        </ul>
+                        <div class="zoom-container">
+                            <img src="runnerup.jpg" alt="Excellence in Automation Award">
+                        </div>
+                    </div>
                 </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">MAY 2025 - PRESENT</time>
-                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Developing Enterprise Solutions</h3>
-                <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Senior Applications Developer, I co-led the development of an Audit Case Management System in Dynamics 365 and optimized backend workflows with Python data validation scripts.</p>
-                <!-- Expandable Details -->
-                <div class="timeline-details text-stone-600 dark:text-stone-300">
-                    <p class="font-semibold">Roles & Duties:</p>
-                    <ul>
-                        <li>Optimized backend workflows by developing Python data validation scripts, increasing the efficiency of the finance reporting pipeline by 46%.</li>
-                        <li>Co-led the development and rollout of an Audit Case Management System in Dynamics 365, enabling 32 ServiceOntario officials to track and manage complex business cases.</li>
-                        <li>Organized Agile sprints and contributed to backlog refinement for a cross-functional engineering team of 48 members, ensuring a balance between development speed and quality.</li>
-                        <li>Applied Azure AI and Python automation to develop a system that detected service reporting anomalies with 62% greater accuracy than previous methods. </li>
-                    </ul>
+               
+                <!-- Timeline Item 1 -->
+                 <div class="timeline-item" data-timeline-id="DEC2025">
+                    <div class="timeline-dot">
+                        <svg class="icon-plus" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                        </svg>
+                        <svg class="icon-minus hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-header">
+                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">MAY 2025 - PRESENT</time>
+                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Developing Enterprise Solutions</h3>
+                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Senior Applications Developer, I co-led the development of an Audit Case Management System in Dynamics 365 and optimized backend workflows with Python data validation scripts.</p>
+                    </div>
+                    <div class="timeline-details">
+                        <p class="font-semibold text-stone-900 dark:text-white">Roles & Duties:</p>
+                        <ul class="text-stone-600 dark:text-stone-400">
+                            <li>Optimized backend workflows by developing Python data validation scripts, increasing the efficiency of the finance reporting pipeline by 46%.</li>
+                            <li>Co-led the development and rollout of an Audit Case Management System in Dynamics 365, enabling 32 ServiceOntario officials to track and manage complex business cases.</li>
+                            <li>Organized Agile sprints and contributed to backlog refinement for a cross-functional engineering team of 48 members, ensuring a balance between development speed and quality.</li>
+                            <li>Applied Azure AI and Python automation to develop a system that detected service reporting anomalies with 62% greater accuracy than previous methods.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-                    <div class="timeline-item">
-                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
-                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
-                </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-500">JANUARY 2025</time>
-                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Excellence in Automation Award</h3>
-                <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Excellence Award for transforming manual workforce approvals using a combination of Python and Power Automate.</p>
-                <!-- Expandable Details -->
-                <div class="timeline-details text-stone-600 dark:text-stone-300">
-                    <p class="font-semibold">Achievement Details:</p>
-                    <ul>
-                        <li>Designed a fully automated approval workflow, replacing a multi-step manual process.</li>
-                        <li>Reduced processing time for workforce requests by over 78%.</li>
-                    </ul>
-                    <div class="zoom-container">
 
-                    <img src="award1.jfif" alt="Excellence in Automation Award">
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item" data-timeline-id="JAN2025">
+                    <div class="timeline-dot">
+                        <svg class="icon-plus" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                        </svg>
+                        <svg class="icon-minus hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-header">
+                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">JANUARY 2025</time>
+                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Excellence in Automation Award</h3>
+                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Excellence Award for transforming manual workforce approvals using a combination of Python and Power Automate.</p>
+                    </div>
+                    <div class="timeline-details">
+                        <p class="font-semibold text-stone-900 dark:text-white">Achievement Details:</p>
+                        <ul class="text-stone-600 dark:text-stone-400">
+                            <li>Designed a fully automated approval workflow, replacing a multi-step manual process.</li>
+                            <li>Reduced processing time for workforce requests by over 78%.</li>
+                        </ul>
+                        <div class="zoom-container">
+                            <img src="award1.jfif" alt="Excellence in Automation Award">
+                        </div>
                     </div>
                 </div>
-            </div>
-                     <div class="timeline-item">
-                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
-                    <!-- Plus Icon -->
-                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                    <!-- Minus Icon (Hidden) -->
-                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
-                </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">JULY 2024 - APRIL 2025</time>
-                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Bridging Policy and Technology</h3>
-                <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Workforce Policy Analyst, I developed the automated staffing request tool and built interactive Power BI dashboards for workforce forecasting and policy analysis.</p>
-                <!-- Expandable Details -->
-                <div class="timeline-details text-stone-600 dark:text-stone-300">
-                    <p class="font-semibold">Roles & Duties:</p>
-                    <ul>
-                        <li>Developed automated staffing request tool using Microsoft Power Automate, integrating Teams Approvals, SharePoint, and PowerBI to increase workflow efficiency by 78%.</li>
-                        <li>Improved data processing accuracy by 67% by building Python and SQL automation scripts for critical workforce reporting.</li>
-                        <li>Fully automated the reporting process by creating interactive Power BI dashboards for workforce forecasting, funding allocation, and policy analysis.</li>
-                        <li>Managed Agile sprints and backlog refinement while leading procurement efforts to acquire analytics tools and training 300+ executives and managers on system adoption.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
-                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
-                </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">DECEMBER 2023</time>
-                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Recognition for Innovation</h3>
-                <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Innovator Award for creating an enterprise analytics tool to generate organization charts from complex datasets.</p>
-                <!-- Expandable Details -->
-                <div class="timeline-details text-stone-600 dark:text-stone-300">
-                    <p class="font-semibold">Achievement Details:</p>
-                    <ul>
-                        <li>Delivered a scalable analytics tool that increased accuracy in workforce planning and pay equity analysis by 80% over previous manual methods.</li>
-                        <li>Developed a robust Python script to automate complex data cleaning and transformation tasks, processing large datasets in under 1 minute with 100% accuracy.</li>
-                        <li>Provided key data visualizations that enabled a 30% faster reduction in the project backlog and supplied executives with clear insights for strategic decisions.</li>
-                    </ul>
-                    <div class="zoom-container">
-                    <img src="award2.jpg" alt="Excellence in Automation Award">
-                    </div>
-                </div>
-            </div>
-                     
-                    <div class="timeline-item">
-                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
-                    <!-- Plus Icon -->
-                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                    <!-- Minus Icon (Hidden) -->
-                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
-                </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">MAY 2022 - JULY 2024</time>
-                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Diving into Data Automation</h3>
-                <p class="text-base font-normal text-stone-600 dark:text-stone-400">Began my career as a Workforce Data Modelling Analyst, automating Excel reporting with Python to achieve a 65% faster workflow and developing robust data pipelines.</p>
-                <!-- Expandable Details -->
-                <div class="timeline-details text-stone-600 dark:text-stone-300">
-                    <p class="font-semibold">Roles & Duties:</p>
-                    <ul>
-                        <li>Slashed report generation time by over 98% by automating manual Excel processes with Python, reducing a 3-hour task to under 2 minutes</li>
-                        <li>Modernized service standard analysis by migrating a manual Excel system to a fully automated Power BI solution, providing 45 Job Evaluation Specialists with real-time, self-refreshing performance dashboards.</li>
-                    </ul>
-                </div>
-            </div>
-                    <div class="timeline-item">
-                <div class="timeline-dot bg-white border-stone-200 dark:bg-stone-900 dark:border-stone-600" onclick="toggleDetails(this)">
-                    <svg class="icon-plus w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path></svg>
-                    <svg class="icon-minus hidden w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path></svg>
-                </div>
-                <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">2018 - 2023</time>
-                <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Foundation in Computer Science</h3>
-                <p class="text-base font-normal text-stone-600 dark:text-stone-400">Graduated with Distinction from Ontario Tech University with a Bachelor of Science in Computer Science, building a strong foundation for my career in technology.</p>
-                <!-- Expandable Details -->
-                <div class="timeline-details text-stone-600 dark:text-stone-300">
-                    <p class="font-semibold">Co-op Programs</p>
-                    <ul>
-                        <li>Web Development Intern - CIBC - September 2021 - December 2021 </li>
-                        <li>Software Engineer Intern - Commonwell Mutual Insurance Group - May 2021 - Aug 2021 </li>
-                        <li>Technology Assistant - Ontario Tech University - June 2020-April 2021</li>
-                    </ul>
-                    <div class="zoom-container">
-                    <img src="degree.jpg" alt="Excellence in Automation Award">
-                    </div>
-                </div>
-            </div>
-                </div>
-            </div>
-        </section>
 
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item" data-timeline-id="JUL2024">
+                    <div class="timeline-dot">
+                        <svg class="icon-plus" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                        </svg>
+                        <svg class="icon-minus hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-header">
+                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">JULY 2024 - APRIL 2025</time>
+                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Bridging Policy and Technology</h3>
+                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">As a Workforce Policy Analyst, I developed the automated staffing request tool and built interactive Power BI dashboards for workforce forecasting and policy analysis.</p>
+                    </div>
+                    <div class="timeline-details">
+                        <p class="font-semibold text-stone-900 dark:text-white">Roles & Duties:</p>
+                        <ul class="text-stone-600 dark:text-stone-400">
+                            <li>Developed automated staffing request tool using Microsoft Power Automate, integrating Teams Approvals, SharePoint, and PowerBI to increase workflow efficiency by 78%.</li>
+                            <li>Improved data processing accuracy by 67% by building Python and SQL automation scripts for critical workforce reporting.</li>
+                            <li>Fully automated the reporting process by creating interactive Power BI dashboards for workforce forecasting, funding allocation, and policy analysis.</li>
+                            <li>Managed Agile sprints and backlog refinement while leading procurement efforts to acquire analytics tools and training 300+ executives and managers on system adoption.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item" data-timeline-id="DEC2023">
+                    <div class="timeline-dot">
+                        <svg class="icon-plus" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                        </svg>
+                        <svg class="icon-minus hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-header">
+                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">DECEMBER 2023</time>
+                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Recognition for Innovation</h3>
+                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Received the Innovator Award for creating an enterprise analytics tool to generate organization charts from complex datasets.</p>
+                    </div>
+                    <div class="timeline-details">
+                        <p class="font-semibold text-stone-900 dark:text-white">Achievement Details:</p>
+                        <ul class="text-stone-600 dark:text-stone-400">
+                            <li>Delivered a scalable analytics tool that increased accuracy in workforce planning and pay equity analysis by 80% over previous manual methods.</li>
+                            <li>Developed a robust Python script to automate complex data cleaning and transformation tasks, processing large datasets in under 1 minute with 100% accuracy.</li>
+                            <li>Provided key data visualizations that enabled a 30% faster reduction in the project backlog and supplied executives with clear insights for strategic decisions.</li>
+                        </ul>
+                        <div class="zoom-container">
+                            <img src="award2.jpg" alt="Innovator Award">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item" data-timeline-id="MAY2022">
+                    <div class="timeline-dot">
+                        <svg class="icon-plus" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                        </svg>
+                        <svg class="icon-minus hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-header">
+                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">MAY 2022 - JULY 2024</time>
+                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Diving into Data Automation</h3>
+                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Began my career as a Workforce Data Modelling Analyst, automating Excel reporting with Python to achieve a 65% faster workflow and developing robust data pipelines.</p>
+                    </div>
+                    <div class="timeline-details">
+                        <p class="font-semibold text-stone-900 dark:text-white">Roles & Duties:</p>
+                        <ul class="text-stone-600 dark:text-stone-400">
+                            <li>Slashed report generation time by over 98% by automating manual Excel processes with Python, reducing a 3-hour task to under 2 minutes</li>
+                            <li>Modernized service standard analysis by migrating a manual Excel system to a fully automated Power BI solution, providing 45 Job Evaluation Specialists with real-time, self-refreshing performance dashboards.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item" data-timeline-id="EDU2018">
+                    <div class="timeline-dot">
+                        <svg class="icon-plus" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                        </svg>
+                        <svg class="icon-minus hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-header">
+                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">2018 - 2023</time>
+                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">Foundation in Computer Science</h3>
+                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Graduated with Distinction from Ontario Tech University with a Bachelor of Science in Computer Science, building a strong foundation for my career in technology.</p>
+                    </div>
+                    <div class="timeline-details">
+                        <p class="font-semibold text-stone-900 dark:text-white">Co-op Programs</p>
+                        <ul class="text-stone-600 dark:text-stone-400">
+                            <li>Web Development Intern - CIBC - September 2021 - December 2021</li>
+                            <li>Software Engineer Intern - Commonwell Mutual Insurance Group - May 2021 - Aug 2021</li>
+                            <li>Technology Assistant - Ontario Tech University - June 2020-April 2021</li>
+                        </ul>
+                        <div class="zoom-container">
+                            <img src="degree.jpg" alt="Degree Certificate">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<!-- Journey Image Modal -->
+    <div id="journeyImageModal" class="journey-modal-overlay">
+        <div class="journey-modal-content">
+            <div class="journey-modal-close">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <img id="journeyModalImage" src="" alt="">
+            <div class="journey-modal-share">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"></path>
+                </svg>
+                Share
+            </div>
+        </div>
+    </div>  
+<div id="toast" class="toast"></div>
         <!-- Projects Section -->
         <section id="projects" class="py-20 section">
             <div class="container mx-auto px-6 md:px-0">
@@ -460,7 +702,7 @@
                              data-project-id="Fabric_Project"
                              data-category="pyspark bi dataviz fabric"
                              data-title="Data Analytics Pipeline for Ontario Crime"
-                             data-video-url="https://www.youtube.com/embed/Ri6hywDxJJM?si=h_VSH3yff86V4e5H"
+                             data-video-url="https://www.youtube.com/embed/63ODAAPO_Cw?si=TlVpRPNREJcRFTSZ"
                              data-github-url="https://github.com/anannyasaha/Crime_Data_Engineering"
                              data-tech="Fabric, Pyspark, Sql,End_to_End_Pipeline, PowerBi"
                              data-description="Built a full end-to-end crime analytics pipeline in Microsoft Fabric using PySpark and Delta Lake. Automated data ingestion from StatCan, processed it through Raw, Bronze, Silver, and Gold layers, and designed a star schema with fact/dim tables. Created optimized aggregated tables and an interactive Power BI dashboard to analyze crime trends, clearance rates, and municipal comparisons across Ontario."
@@ -1135,30 +1377,149 @@
 
             setupCarousel('project-grid', 'project-scroll-left', 'project-scroll-right', 'project-dots');
             setupCarousel('lab-grid', 'lab-scroll-left','lab-scroll-right', 'lab-dots');
+         
+        
+            let currentTimelineId = null;
 
-            const toggleDetails = (button) => {
-            // Find the parent .timeline-item and then the .timeline-details within it
-            const details = button.parentElement.querySelector('.timeline-details');
-            const iconPlus = button.querySelector('.icon-plus');
-            const iconMinus = button.querySelector('.icon-minus');
+            
+        
+            // Toggle timeline item expansion
+            const toggleTimelineItem = (element) => {
+                const timelineItem = element.closest('.timeline-item');
+                const details = timelineItem.querySelector('.timeline-details');
+                const iconPlus = timelineItem.querySelector('.icon-plus');
+                const iconMinus = timelineItem.querySelector('.icon-minus');
 
-            // Check if details are currently shown
-            if (details.style.display === 'block') {
-            // Hide details and swap icons
-            details.style.display = 'none';
-            iconPlus.classList.remove('hidden');
-            iconMinus.classList.add('hidden');
-            } else {
-            // Show details and swap icons
-            details.style.display = 'block';
-            iconPlus.classList.add('hidden');
-            iconMinus.classList.remove('hidden');
+                const isExpanded = details.classList.contains('expanded');
+
+                if (isExpanded) {
+                    details.classList.remove('expanded');
+                    iconPlus.classList.remove('hidden');
+                    iconMinus.classList.add('hidden');
+                } else {
+                    details.classList.add('expanded');
+                    iconPlus.classList.add('hidden');
+                    iconMinus.classList.remove('hidden');
+                }
+            };
+            const journey_section=document.getElementById("timeline-dot")
+            console.log("hello")
+            // Add click event listeners to timeline dots and headers
+            document.querySelectorAll('.timeline-dot, .timeline-header').forEach(element => {
+                element.addEventListener('click', function() {
+                    toggleTimelineItem(this);
+                });
+            });
+
+            // Open image in modal
+            const openImageModal = (container, timelineId) => {
+                const img = container.querySelector('img');
+                const modal = document.getElementById('journeyImageModal');
+                const modalImg = document.getElementById('journeyModalImage');
+                
+                currentTimelineId = timelineId;
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+                
+                modal.classList.add('active');
+            };
+
+            // Add click event listeners to zoom containers
+            document.querySelectorAll('.zoom-container').forEach(container => {
+                container.addEventListener('click', function() {
+                    const timelineId = this.closest('.timeline-item').dataset.timelineId;
+                    openImageModal(this, timelineId);
+                });
+            });
+
+            // Close modal
+            const closeJourneyImageModal = () => {
+                const modal = document.getElementById('journeyImageModal');
+                modal.classList.remove('active');
+                currentTimelineId = null;
+            };
+
+            // Close modal when clicking overlay
+            const journeyModalOverlay = document.getElementById('journeyImageModal');
+            journeyModalOverlay.addEventListener('click', (event) => {
+                if (event.target === journeyModalOverlay) {
+                    closeJourneyImageModal();
+                }
+            });
+
+            // Close modal button
+            document.querySelector('.journey-modal-close').addEventListener('click', closeJourneyImageModal);
+
+            // Share timeline item
+            document.querySelector('.journey-modal-share').addEventListener('click', () => {
+                if (!currentTimelineId) return;
+                
+                const url = `${window.location.origin}${window.location.pathname}#timeline=${currentTimelineId}`;
+                
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast('Link copied to clipboard!');
+                }).catch(() => {
+                    showToast('Failed to copy link');
+                });
+            });
+
+            // Show toast notification
+            const showToast = (message) => {
+                const toast = document.getElementById('toast');
+                toast.textContent = message;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            };
+
+
+        // Check URL for timeline hash on page load
+         const checkUrlForTimeline = () => {
+            if (window.location.hash.startsWith('#timeline=')) {
+                const timelineId = window.location.hash.substring(10);
+                const timelineItem = document.querySelector(`.timeline-item[data-timeline-id="${timelineId}"]`);
+                
+                if (timelineItem) {
+                    setTimeout(() => {
+                        // Expand the timeline item
+                        const details = timelineItem.querySelector('.timeline-details');
+                        const iconPlus = timelineItem.querySelector('.icon-plus');
+                        const iconMinus = timelineItem.querySelector('.icon-minus');
+                        
+                        details.classList.add('expanded');
+                        iconPlus.classList.add('hidden');
+                        iconMinus.classList.remove('hidden');
+                        
+                        // Scroll to the item
+                        timelineItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // If there's an image, open it in modal
+                        const imageContainer = timelineItem.querySelector('.zoom-container');
+                        if (imageContainer) {
+                            setTimeout(() => {
+                                openImageModal(imageContainer, timelineId);
+                            }, 600);
+                        }
+                    }, 100);
+                }
             }
-        };
+        }
 
-        // --- IMPORTANT ---
-        // Attach the function to the window object so onclick can find it
-        window.toggleDetails = toggleDetails;
+        // Keyboard support for modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeJourneyImageModal();
+            }
+        });
+        checkUrlForTimeline();
+        // Initialize on page load
+        window.addEventListener('load', checkUrlForTimeline);
+        window.addEventListener('hashchange', checkUrlForTimeline);
+        
+
+       
             // --- Typing Animation for Hero Subtitle ---
             const typingSubtitle = document.getElementById('typing-subtitle');
             if (typingSubtitle) {
