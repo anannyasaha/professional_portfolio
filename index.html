@@ -928,7 +928,14 @@
             <!-- Content -->
             <div id="modal-content" class="modal-content relative w-full max-w-4xl max-h-[90vh] bg-white dark:bg-stone-900 rounded-lg shadow-xl flex flex-col">
                 <div class="p-6 border-b dark:border-stone-700 flex justify-between items-center flex-shrink-0">
-                    <h3 id="modal-title" class="text-2xl font-bold">Project Title</h3>
+                    <div>
+                        <h3 id="modal-title" class="text-2xl font-bold">Project Title</h3>
+                        <p id="modal-meta" class="hidden mt-1 text-sm text-stone-500 dark:text-stone-400">
+                            <span id="modal-role" class="font-semibold text-amber-600 dark:text-amber-500"></span>
+                            <span id="modal-meta-sep" class="mx-1">&bull;</span>
+                            <span id="modal-timeline"></span>
+                        </p>
+                    </div>
                     <button id="modal-close-btn" class="text-stone-500 hover:text-stone-900 dark:hover:text-white text-3xl leading-none">&times;</button>
                 </div>
                 <div class="p-6 overflow-y-auto space-y-6">
@@ -1177,7 +1184,10 @@
             const modal = document.getElementById('project-modal');
             const modalOverlay = document.getElementById('modal-overlay');
             const modalCloseBtn = document.getElementById('modal-close-btn');
-            
+            const modalMeta = document.getElementById('modal-meta');
+            const modalRole = document.getElementById('modal-role');
+            const modalTimeline = document.getElementById('modal-timeline');
+            const modalMetaSep = document.getElementById('modal-meta-sep');
             const modalTitle = document.getElementById('modal-title');
             const modalVideo = document.getElementById('modal-video');
             const modalDescription = document.getElementById('modal-description');
@@ -1229,6 +1239,12 @@
                 if (!card) return;
                 currentProjectId = card.dataset.projectId;
                 modalTitle.textContent = card.dataset.title;
+                const role = card.dataset.role || '';
+                const timeline = card.dataset.timeline || '';
+                modalRole.textContent = role;
+                modalTimeline.textContent = timeline;
+                modalMetaSep.classList.toggle('hidden', !(role && timeline));
+                modalMeta.classList.toggle('hidden', !(role || timeline));
                 modalVideo.src = card.dataset.videoUrl;
                 modalDescription.textContent = card.dataset.description;
                 modalLearnings.textContent = card.dataset.learnings;
