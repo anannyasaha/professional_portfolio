@@ -462,6 +462,33 @@
             <h2 class="text-4xl font-bold text-center mb-4 font-display">The Journey</h2>
             <p class="text-center text-lg text-stone-600 dark:text-stone-400 mb-12">A timeline of key milestones in my career.</p>
             <div class="max-w-3xl mx-auto">
+                <div class="timeline-item" data-timeline-id="OCT2026">
+                    <div class="timeline-dot">
+                        <svg class="icon-plus" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
+                        </svg>
+                        <svg class="icon-minus hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="timeline-header">
+                        <time class="mb-1 text-sm font-normal leading-none text-stone-500 dark:text-stone-400">OCTOBER 2026</time>
+                        <h3 class="text-lg font-semibold text-stone-900 dark:text-white">First Place in Agent for Impact Hackathon - Powered by Google Cloud</h3>
+                        <p class="text-base font-normal text-stone-600 dark:text-stone-400">Won first place as part of a 6-member team for building a multi-agent evacuation readiness assistant that helps county emergency managers prioritize at-risk neighborhoods, plan reachable shelters, and verify shelter records live with Google Maps.</p>
+                    </div>
+                    <div class="timeline-details">
+                        <p class="font-semibold text-stone-900 dark:text-white">Roles & Duties:</p>
+                        <ul class="text-stone-600 dark:text-stone-400">
+                            <li>Ideated the agent concept and defined how it should support a county readiness planner, including the three questions it answers: which tracts to prioritize, where those residents can go, and whether the shelter data can be trusted.</li>
+                            <li>Identified the groups needing extra consideration in evacuation planning, such as households without a car, residents 65+, adults with mobility disabilities, mobile home residents, and people in coastal flood zones, and shaped how their needs are reflected in the agent's reachability rules.</li>
+                            <li>Shaped a planner-friendly experience with the bottom line first, assignable actions, source-tagged evidence, and an explicit list of what the agent could not tell her, and gave UI feedback to make the dashboard easier to use between meetings.</li>
+                            <li>Collaborated with a team of 6 using AI-assisted development (Antigravity and Claude) to build and deploy the solution on Google Cloud with Google ADK, Gemini, BigQuery MCP, and Grounding with Google Maps.</li>
+                        </ul>
+                        <div class="zoom-container">
+                            <img src="hackathonWin.png" alt="Agent for Impact Hackathon First Place">
+                        </div>
+                    </div>
+                </div>
                 <!-- Timeline Item 0 -->
                  <div class="timeline-item" data-timeline-id="MAY2025">
                     <div class="timeline-dot">
@@ -697,6 +724,80 @@
                     <!-- Project Grid -->
                     <div id="project-grid" class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar snap-x snap-mandatory scroll-smooth px-6 md:px-0">
                         <!-- Project Card 0 -->
+                        <!-- Project Card 1 -->
+                        <div class="project-card w-[85%] sm:w-80 md:w-96 flex-shrink-0 snap-center cursor-pointer bg-white dark:bg-stone-900 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                            data-project-id="Evac_Readiness_Agent"
+                            data-category="ai agents gcp adk genai"
+                            data-title="Evacuation Readiness Agent for Hurricane Planning"
+                            data-video-url=""
+                            data-live-url="https://evac-dashboard-861336771001.us-east1.run.app/"
+                            data-badge-url="https://www.credly.com/badges/34acceb8-bbcb-4865-b477-e0b71c976a87/public_url"
+                            data-github-url="https://github.com/Danial-Kord/Adaptive-Evacuation-Readiness"
+                            data-tech="Google ADK, Gemini 3.x, Python, BigQuery MCP, Grounding with Google Maps, Cloud Run, Vertex AI Agent Engine, FastAPI, React, TypeScript, Vite, Antigravity, Claude"
+                            data-description="Won first place at the Agent for Impact hackathon with a team of 6. Built a multi-agent evacuation readiness assistant for county emergency managers using Google's Agent Development Kit. A coordinator routes questions to three specialist agents (prioritization, destinations, verification) that combine FEMA shelter records, Census, CDC and HHS data in BigQuery with live Grounding with Google Maps checks. Every fact is labeled by source, and missing data is reported as unrecorded, never as 'no'. Deployed on Cloud Run with a React planning dashboard. Built with AI-assisted development using Antigravity and Claude."
+                            data-outcomes="Won first place at the Agent for Impact hackathon in a team of 6. | Defined how the agent should help a readiness planner and which groups of people need extra consideration: households without a car, residents 65+, adults with mobility disabilities, mobile home residents and people in coastal flood zones. | Shaped the planner-friendly experience: bottom line first, assignable actions, source-tagged evidence and an explicit list of what the agent could not tell her. | The team built a coordinator plus three specialist agents, each with custom tools, to answer: which tracts to prioritize, where those people can go, and whether the record is accurate. | Reachability rules reflect real household needs: a 30-minute drive for car owners, a 1-mile walk for households without a car, and door-to-door pickup for no car plus a mobility disability. | Shelters are verified one building at a time against Google Maps, and accessibility claims are accepted only when grounding metadata cites a Maps source. | A 25-case evaluation suite with automated checks and an LLM judge ran against the deployed agent and caught real defects (an over-long brief, a reused drive time, a zero-capacity shelter marked usable), which were then fixed. | Deployed to Cloud Run with sessions stored in Vertex AI Agent Engine, plus a map-centered React dashboard on live BigQuery data."
+                            data-learnings="Learned to start from the end user instead of the technology: who the emergency manager is, what decisions she must defend to her director, and which residents are easiest to overlook. Learned that honesty about data gaps is a product feature. Roughly two thirds of shelters have no accessibility record, so the agent separates what it can speak to from what nobody has assessed. Gained hands-on experience with agentic AI product design, Google ADK multi-agent routing, Grounding with Google Maps and BigQuery MCP. Also learned how to work with AI coding tools (Antigravity and Claude) as a team of 6, where a clear problem definition, user needs and UI feedback guide what gets built."
+                            data-role="Product & UX Ideation (Agent for Impact Hackathon, Team of 6)"
+                            data-timeline="October 20, 2026">
+                            <img src="TODO_Evac_Agent.png" alt="Evacuation Readiness Agent" class="w-full h-48 object-cover">
+                            <div class="project-transcript hidden">
+                                We are honored to win first place at the Agent for Impact hackathon.
+                                Our team of six set out to build an AI agent that helps county emergency managers prepare for hurricane season.
+                                Every summer, an emergency manager has to answer three hard questions.
+                                Which neighborhoods need the most help evacuating? Where would those people actually go? And can she trust the shelter data she is looking at?
+                                The data exists, but it is scattered across FEMA shelter records, Census tracts, CDC health estimates and HHS power-dependence data.
+                                And the biggest trap is hidden in the paperwork. For roughly two thirds of American shelters, nobody has recorded whether they are wheelchair accessible.
+                                An agent that reports no accessible shelters nearby, when it really means nobody wrote it down, turns a fact about paperwork into a fact about buildings.
+                                So we designed our agent to be honest first.
+                                My role was ideation. I focused on how the agent could help a readiness planner, which people need extra consideration, such as households without a car, older residents and people with mobility disabilities, and how to make the interface friendly for someone reading between meetings.
+                                We built it with AI-assisted tools, Antigravity and Claude, which let a small team move fast once the problem and the user were clear.
+                                The system uses Google's Agent Development Kit in Python, powered by Gemini 3.
+                                It is one coordinator and three specialist agents, one for each question the manager asks.
+                                The coordinator reads the question and routes it. For an active emergency, it answers instantly and sends people to 911, because a planning tool must not pretend to know what is open today.
+                                For a quick fact, like Florida's total shelter capacity, it queries BigQuery directly through Google's managed BigQuery MCP server.
+                                For deeper questions, it hands off to a specialist.
+                                The prioritization agent ranks census tracts using statewide percentiles for households without a car, residents over 65, adults with mobility disabilities, mobile homes and coastal flood exposure.
+                                Managers can adjust the weights, and an equity audit checks the result.
+                                The destination agent decides what reachable really means.
+                                A household with a car must reach a shelter within a thirty minute drive, using Google Maps drive times.
+                                A household without a car gets a one mile walk.
+                                And a household with no car and a mobility disability gets door-to-door pickup, because nothing is walkable.
+                                It also excludes shelters inside the storm surge zone and flags shelters that need an elevation check.
+                                The verification agent asks whether the record is still true.
+                                It reports unrecorded fields, contradictory records and reporting bias across counties.
+                                Then it checks shelters live, one building at a time, using Grounding with Google Maps.
+                                Each shelter comes back confirmed, renamed, closed, moved or unverified.
+                                We only accept an accessibility claim when Gemini's grounding metadata cites a Maps source.
+                                Every fact in the answer carries a label, FEMA historical record, Google Maps live, Census measured, CDC modeled, or unrecorded.
+                                Answers follow a fixed format, bottom line first, actions to take before September, compact evidence, and a clear list of what the agent could not tell her.
+                                To keep quality high, we built an evaluation suite of twenty-five cases that runs against the deployed agent.
+                                It combines deterministic checks on tools, content and latency with an LLM judge that scores answers the way an emergency manager would read them.
+                                The evals caught real defects. A brief that ran 1,858 words. A drive time reused for the wrong tract. A shelter with zero capacity marked usable. We fixed each one.
+                                The agent is deployed on Google Cloud Run, with conversations stored in Vertex AI Agent Engine so sessions survive redeploys.
+                                We also built a React and TypeScript dashboard with a shelter map, a priority tract table and a planning assistant that shows tool names, timings and Google Maps sources.
+                                The result is an agent that is useful because it is honest, one that can say, eleven of these shelters I can speak to, sixty-four nobody has assessed.
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Evacuation Readiness Agent</h3>
+                                <p class="text-stone-600 dark:text-stone-400 mb-4">First-place multi-agent system on Google ADK and Gemini that helps emergency managers prioritize tracts, plan reachable shelters, and verify records live with Google Maps, while reporting data gaps honestly.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tag text-xs font-semibold bg-rose-100 text-rose-800 px-2 py-1 rounded-full">#AI-Agents</span>
+                                    <span class="tag text-xs font-semibold bg-purple-100 text-purple-800 px-2 py-1 rounded-full">#google-adk</span>
+                                    <span class="tag text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full">#bigquery</span>
+                                    <span class="tag text-xs font-semibold bg-stone-100 text-stone-800 px-2 py-1 rounded-full">#gcp</span>
+                                </div>
+                                <div class="mt-4 flex justify-between items-center">
+                                    <a href="#" class="view-project-link font-semibold text-amber-600 dark:text-amber-500 hover:underline">View Project &rarr;</a>
+                                    <div class="flex items-center gap-3">
+                                        <a href="https://evac-dashboard-861336771001.us-east1.run.app/" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">Live Demo</a>
+                                        <a href="https://www.credly.com/badges/34acceb8-bbcb-4865-b477-e0b71c976a87/public_url" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">Badge</a>
+                                        <a href="https://github.com/Danial-Kord/Adaptive-Evacuation-Readiness" target="_blank" rel="noopener noreferrer" class="github-link text-stone-500 hover:text-amber-600 dark:hover:text-amber-500 transition-colors">
+                                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="project-card w-[85%] sm:w-80 md:w-96 flex-shrink-0 snap-center cursor-pointer bg-white dark:bg-stone-900 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden" 
                              data-project-id="Fabric_Project"
                              data-category="pyspark bi dataviz fabric"
